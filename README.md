@@ -17,6 +17,8 @@ This folder contains Python 2.7 implementations of the following scheduling algo
 * Deferrable: Deferrable Server
 * Sporadic: Sporadic Server
 
+Task execution is simulated via verbose messages. Prepare your tasks using the inputs and modify relevant print lines with your code to apply scheduling.
+
 
 ##FILE STRUCTURE
 Each folder contains one main program named after its corresponding algorithm.
