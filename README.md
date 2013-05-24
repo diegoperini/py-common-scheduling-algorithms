@@ -10,12 +10,12 @@ Diego Perini, Istanbul Technical University, May 2013
 ##INTRODUCTION
 This folder contains Python 2.7 implementations of the following scheduling algorithms.
 
-RM: Rate Monotonic
-DM: Deadline Monotonic
-EDF: Earliest Deadline First
-LLF: Least Laxity First
-Deferrable: Deferrable Server
-Sporadic: Sporadic Server
+* RM: Rate Monotonic
+* DM: Deadline Monotonic
+* EDF: Earliest Deadline First
+* LLF: Least Laxity First
+* Deferrable: Deferrable Server
+* Sporadic: Sporadic Server
 
 
 ##FILE STRUCTURE
