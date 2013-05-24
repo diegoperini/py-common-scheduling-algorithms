@@ -4,7 +4,7 @@ Common scheduling algorithms implemented in Python 2.7
 
 
 ##AUTHOR
-Diego Perini, Istanbul Technical University, 2013
+Diego Perini, Istanbul Technical University, May 2013
 
 
 ##INTRODUCTION
@@ -60,8 +60,8 @@ sporadic_inputs.txt
 
 
 ##HOW TO RUN
-In order to run the project, execute the following command in terminal. Replace algorithm nape with one of the given implementations (i.e rm.py)
+In order to run the project, execute the following command in terminal. Replace algorithm name with one of the given implementations (i.e rm.py)
 
-    python algorithm_name.py
+    python path/algorithm_name.py
 
 The result will be shown on standard output. A visual representation will also be rendered in html. Look for `output.html` file in your project folder after each execution. 
