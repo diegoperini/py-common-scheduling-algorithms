@@ -67,3 +67,9 @@ In order to run the project, execute the following command in terminal. Replace 
     python path/algorithm_name.py
 
 The result will be shown on standard output. A visual representation will also be rendered in html. Look for `output.html` file in your project folder after each execution. 
+
+
+##License
+Public Domain
+
+Noob info: Public Domain means you are free to decide what to do with this code. There are absolutely no restrictions regarding copyright, distribution and commercial appliances. Use it as if you have written it.
