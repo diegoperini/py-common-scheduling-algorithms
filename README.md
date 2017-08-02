@@ -3,11 +3,11 @@ py-common-scheduling-algorithms
 Common scheduling algorithms implemented in Python 2.7
 
 
-##AUTHOR
+## AUTHOR
 Diego Perini, Istanbul Technical University, May 2013
 
 
-##INTRODUCTION
+## INTRODUCTION
 This folder contains Python 2.7 implementations of the following scheduling algorithms.
 
 * RM: Rate Monotonic
@@ -20,7 +20,7 @@ This folder contains Python 2.7 implementations of the following scheduling algo
 Task execution is simulated via verbose messages. Prepare your tasks using the inputs and modify relevant print lines with your code to apply scheduling.
 
 
-##FILE STRUCTURE
+## FILE STRUCTURE
 Each folder contains one main program named after its corresponding algorithm.
 
 `prime.py` is a utility library provided by third parties for mathematical operations.
@@ -61,7 +61,7 @@ sporadic_inputs.txt
 
 
 
-##HOW TO RUN
+## HOW TO RUN
 In order to run the project, execute the following command in terminal. Replace algorithm name with one of the given implementations (i.e rm.py)
 
     python path/algorithm_name.py
@@ -69,7 +69,7 @@ In order to run the project, execute the following command in terminal. Replace 
 The result will be shown on standard output. A visual representation will also be rendered in html. Look for `output.html` file in your project folder after each execution. 
 
 
-##LICENSE
+## LICENSE
 Public Domain
 
 Noob info: Public Domain means you are free to decide what to do with this code. There are absolutely no restrictions regarding copyright, distribution and commercial appliances. Use it as if you have written it.
