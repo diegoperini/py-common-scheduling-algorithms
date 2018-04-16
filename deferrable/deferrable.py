@@ -49,7 +49,7 @@ class TaskIns(object):
             amount = self.budget
         self.budget -= amount
         return amount
-    
+
     #Default representation (periodic only)
     def __repr__(self):
         budget_text = ""
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     #Allocate task types
     for line in lines:
         #Explode lines
-        line = line.split(' ')  
+        line = line.split(' ')
         for i in range (0,4):
             line[i] = int(line[i])
 
@@ -134,7 +134,7 @@ if __name__ == '__main__':
             task_types.append(TaskType(period=line[0], release=line[1], execution=line[2], deadline=line[3], name=name))
         else:
             aperiodic_tasks.append(TaskIns(a_start=line[1], a_end=int(line[1]) + int(line[2]), a_deadline=line[3], name=name))
-        
+
     #Calculate hyperperiod
     for task_type in task_types:
         hyperperiod.append(task_type.period)
@@ -144,7 +144,7 @@ if __name__ == '__main__':
     task_types = sorted(task_types, tasktype_cmp)
     aperiodic_tasks = sorted(aperiodic_tasks, aperiodic_cmp)
 
-    #Create task instances 
+    #Create task instances
     for i in xrange(0, hyperperiod):
         for task_type in task_types:
             if  (i - task_type.release) % task_type.period == 0 and i >= task_type.release:
@@ -202,17 +202,17 @@ if __name__ == '__main__':
 
                     #Try consuming server, if consumed
                     if on_cpu.consume(clock_step):
-                        print on_def.get_unique_name() , " uses the processor. " , 
-                        html += '<div style="float: left; text-align: center; width: 110px; height: 20px; background-color:' + html_color[on_cpu.name] + ';">' + on_def.get_unique_name() + '</div>'
+                        print on_def.get_unique_name() , " uses the processor. " ,
+                        html += '<div style="float: left; text-align: center; width: 110px; height: 20px; background-color:' + html_color[on_cpu.name] + ';">' + on_def.get_unique_name() + '<br />' + str(i) + '-' + str(i+1) + '</div>'
                         if on_cpu.use(clock_step):
                             tasks.remove(on_cpu)
                         if on_def.a_use(clock_step):
                             aperiodic_tasks.remove(on_def)
-                            html += '<div style="float: left; text-align: center; width: 10px; height: 20px; background-color:' + html_color['Finish'] + ';"></div>'                            #
+                            html += '<div style="float: left; text-align: center; width: 10px; height: 20px; background-color:' + html_color['Finish'] + ';">' + '<br />' + str(i+1) + '</div>'
                             print "Finish!" ,
 
                     #If consume fails
-                    else:                        
+                    else:
                         tasks.remove(on_cpu)
                         on_cpu = possible[1]
                         raise JumpToPeriodicExecution("")
@@ -229,16 +229,16 @@ if __name__ == '__main__':
         #Cpu is idle
         except IndexError:
             print 'No task uses the processor. '
-            html += '<div style="float: left; text-align: center; width: 110px; height: 20px; background-color:' + html_color['Empty'] + ';">Empty</div>'
-        
+            html += '<div style="float: left; text-align: center; width: 110px; height: 20px; background-color:' + html_color['Empty'] + ';">Empty' + '<br />' + str(i) + '-' + str(i+1) + '</br></div>'
+
         #A periodic task uses the CPU
         except JumpToPeriodicExecution:
             print on_cpu.get_unique_name() , " uses the processor. " ,
-            html += '<div style="float: left; text-align: center; width: 110px; height: 20px; background-color:' + html_color[on_cpu.name] + ';">' + on_cpu.get_unique_name() + '</div>'            
+            html += '<div style="float: left; text-align: center; width: 110px; height: 20px; background-color:' + html_color[on_cpu.name] + ';">' + on_cpu.get_unique_name() + '<br />' + str(i) + '-' + str(i+1) + '</div>'
             if on_cpu.use(clock_step):
                 tasks.remove(on_cpu)
-                html += '<div style="float: left; text-align: center; width: 10px; height: 20px; background-color:' + html_color['Finish'] + ';"></div>'
-                print "Finish!" ,            
+                html += '<div style="float: left; text-align: center; width: 10px; height: 20px; background-color:' + html_color['Finish'] + ';">' + '<br />' + str(i+1) + '</div>'
+                print "Finish!" ,
         print "\n"
 
     #Print remaining periodic tasks
@@ -247,13 +247,13 @@ if __name__ == '__main__':
         if p.name == "Deferrable":
             continue
         print p.get_unique_name() + " is dropped due to overload!"
-        html += "<p>" + p.get_unique_name() + " is dropped due to overload!</p>"
+        html += "<p>" + p.get_unique_name() + " is dropped due to overload at time: " + str(i) + "</p>"
 
     #Print remaining aperiodic tasks
     html += "<br /><br />"
     for a in aperiodic_tasks:
         print a.get_unique_name() + " is dropped due to overload!"
-        html += "<p>" + a.get_unique_name() + " is dropped due to overload!</p>"
+        html += "<p>" + a.get_unique_name() + " is dropped due to overload at time: " + str(i) + "</p>"
 
     #Html output end
     html += "</body></html>"

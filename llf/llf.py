@@ -24,7 +24,7 @@ class TaskIns(object):
         if self.usage >= self.end - self.start:
             return True
         return False
-    
+
     #Default representation
     def __repr__(self):
         return str(self.name) + "#" + str(self.id) + " - start: " + str(self.start) + " priority: " + str(self.priority) + budget_text
@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
     #Allocate task types
     for line in lines:
-        line = line.split(' ')  
+        line = line.split(' ')
         for i in range (0,4):
             line[i] = int(line[i])
         if len(line) == 5:
@@ -82,7 +82,7 @@ if __name__ == '__main__':
             raise Exception('Invalid tasks.txt file structure')
         if int(line[0])>0:
             task_types.append(TaskType(period=line[0], release=line[1], execution=line[2], deadline=line[3], name=name))
-        
+
     #Calculate hyperperiod
     for task_type in task_types:
         hyperperiod.append(task_type.period)
@@ -92,7 +92,7 @@ if __name__ == '__main__':
     task_types = sorted(task_types, tasktype_cmp)
 
 
-    #Create task instances 
+    #Create task instances
     for i in xrange(0, hyperperiod):
         for task_type in task_types:
             if  (i - task_type.release) % task_type.period == 0 and i >= task_type.release:
@@ -125,23 +125,23 @@ if __name__ == '__main__':
         #Select task with highest priority
         if len(possible) > 0:
             on_cpu = possible[0]
-            print on_cpu.get_unique_name() , " uses the processor. " , 
-            html += '<div style="float: left; text-align: center; width: 110px; height: 20px; background-color:' + html_color[on_cpu.name] + ';">' + on_cpu.get_unique_name() + '</div>'
+            print on_cpu.get_unique_name() , " uses the processor. " ,
+            html += '<div style="float: left; text-align: center; width: 110px; height: 20px; background-color:' + html_color[on_cpu.name] + ';">' + on_cpu.get_unique_name() + '<br />' + str(i) + '-' + str(i+1) + '</div>'
             on_cpu.priority += 1
             if on_cpu.use(clock_step):
                 tasks.remove(on_cpu)
-                html += '<div style="float: left; text-align: center; width: 10px; height: 20px; background-color:' + html_color['Finish'] + ';"></div>'
+                html += '<div style="float: left; text-align: center; width: 10px; height: 20px; background-color:' + html_color['Finish'] + ';">' + '<br />' + str(i+1) + '</div>'
                 print "Finish!" ,
         else:
             print 'No task uses the processor. '
-            html += '<div style="float: left; text-align: center; width: 110px; height: 20px; background-color:' + html_color['Empty'] + ';">Empty</div>'
+            html += '<div style="float: left; text-align: center; width: 110px; height: 20px; background-color:' + html_color['Empty'] + ';">Empty' + '<br />' + str(i) + '-' + str(i+1) + '</div>'
         print "\n"
 
     #Print remaining periodic tasks
     html += "<br /><br />"
     for p in tasks:
-        print p.get_unique_name() + " is dropped due to overload!"
-        html += "<p>" + p.get_unique_name() + " is dropped due to overload!</p>"
+        print p.get_unique_name() + " is dropped due to overload at time: " + str(i)
+        html += "<p>" + p.get_unique_name() + " is dropped due to overload at time: " + str(i) + "</p>"
 
     #Html output end
     html += "</body></html>"

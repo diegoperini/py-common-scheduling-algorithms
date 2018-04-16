@@ -37,7 +37,7 @@ tasks.txt
     Period2 ReleaseTime2 ExecutionTime2 Deadline2 Taskname2
     Period3 ReleaseTime3 ExecutionTime3 Deadline3 Taskname3
     ..
-    
+
 
 
 deferrable_inputs.txt
@@ -66,7 +66,7 @@ In order to run the project, execute the following command in terminal. Replace 
 
     python path/algorithm_name.py
 
-The result will be shown on standard output. A visual representation will also be rendered in html. Look for `output.html` file in your project folder after each execution. 
+The result will be shown on standard output. A visual representation will also be rendered in html. Look for `output.html` file in your project folder after each execution.
 
 
 ## LICENSE
