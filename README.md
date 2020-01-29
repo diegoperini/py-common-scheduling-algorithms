@@ -17,7 +17,7 @@ This folder contains Python 2.7 implementations of the following scheduling algo
 * Deferrable: Deferrable Server
 * Sporadic: Sporadic Server
 
-Task execution is simulated via verbose messages. Prepare your tasks using the inputs and modify relevant print lines with your code to apply scheduling.
+Task execution is simulated via verbose messages. Prepare your tasks using the input files and modify relevant print lines with your code to apply scheduling.
 
 
 ## FILE STRUCTURE
@@ -27,7 +27,7 @@ Each folder contains one main program named after its corresponding algorithm.
 
 `tasks.txt` is the input file for RM, DM, EDF and LLF implementations. Its structure is explained below.
 
-`deferrable_inputs.txt` and `sporadic_inputs.txt` files are special input files. They can only contain a single server named after its corresponding algorithm. Task that are set their period 0 (zero) are considered aperiodic and are only executed once. Their structure is explained below.
+`deferrable_inputs.txt` and `sporadic_inputs.txt` files are special input files. They can only contain a single server named after their corresponding algorithm. Tasks which set their period as 0 (zero) are considered aperiodic and are only executed once. Their structure is explained below.
 
 
 
@@ -62,7 +62,7 @@ sporadic_inputs.txt
 
 
 ## HOW TO RUN
-In order to run the project, execute the following command in terminal. Replace algorithm name with one of the given implementations (i.e rm.py)
+In order to run the project, execute the following command in a terminal. Replace algorithm name with one of the given implementations (i.e rm.py)
 
     python path/algorithm_name.py
 
